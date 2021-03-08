@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: jithumajinu
+Build-Jdk: 15.0.1
+Implementation-Title: edu-project-core
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: edu.core
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/edu-project-core
+Created-By: Maven Integration for Eclipse
+
