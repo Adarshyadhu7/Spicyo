@@ -6,5 +6,6 @@ import net.javaguides.springbootsecurity.entities.Message;
 
 
 public interface MessageRepository extends JpaRepository<Message, Integer>{
+	
 
 }

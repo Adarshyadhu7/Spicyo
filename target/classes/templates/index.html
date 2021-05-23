@@ -5,7 +5,7 @@
 	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       layout:decorator="layout">
       
-      <head>
+     <head>
         <title>Home</title>
     </head>
     <body>
@@ -14,6 +14,8 @@
 		     <p sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></p>
 	         <p><a th:href="@{/home}">User Home</a></p>
 		     <p><a th:href="@{/admin/home}">Admin Home</a></p>
+		     <p><a th:href="@{/register}">Registered User Details</a></p>
+			 <p><a th:href="@{/newreg}">Registration</a></p>
 		     <p sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></p>
     	</div>
     	

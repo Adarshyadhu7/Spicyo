@@ -8,7 +8,7 @@ public class SpringbootThymeleafSecurityDemoApplication
 {
 	public static void main(String[] args)
 	{
-		SpringApplication.run(SpringbootThymeleafSecurityDemoApplication.class, args);
+		SpringApplication.run(SpringbootThymeleafSecurityDemoApplication.class, args); 
 	}
 
 }
