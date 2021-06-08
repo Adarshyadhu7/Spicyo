@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+@SuppressWarnings("deprecation")
 @Entity
 @Table(name="users")
 public class User
@@ -43,6 +44,14 @@ public class User
 	      inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
 	private List<Role> roles;
 	
+	public User(User user) {
+		this.name = user.getName();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.roles = user.getRoles();
+	}
+	public User() {
+	}
 	public Integer getId()
 	{
 		return id;

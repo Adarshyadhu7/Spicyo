@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Admin | Home</title>
+
+<!-- Bootstrap CSS  & FontAwsome-->
+<link  th:href="@{https://cdn.usebootstrap.com/bootstrap/4.1.1/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{https://cdn.usebootstrap.com/bootstrap/4.1.1/js/bootstrap.min.js}" rel="stylesheet">
+<link rel="icon" th:href="@{https://cdn.usebootstrap.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js}" />
+
+</head>
+<body>
+	<div class="wrapper">
+	<div th:if="${param.success}">
+	<div class="alert alert-info">You've successfully Updated an item!</div>
+		</div>
+	<div align="center">
+		<!-- Page Content  -->
+		<div id="content">
+			<nav th:fragment="sidebar" class="navbar navbar-expand-lg navbar-light"
+				style="border-bottom: 4px solid #7386D5;">
+				<div class="container-fluid">
+					<button type="button" id="sidebarCollapse"
+						class="btn btn-info mr-4">
+						<i class="fas fa-align-left"></i>
+						<!-- <span>Toggle Sidebar</span> -->
+					</button>
+					<form class="form-inline frm">
+						<input class="form-control mr-sm-2" type="search"
+							placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+					<div class="container-fluid">
+					<p>Welcome ADMIN</p>
+					<p>   <a th:href="@{/logout}">Logout</a></p></div>
+					<button class="btn btn-light d-inline-block d-lg-none ml-auto"
+						type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<i class="fas fa-align-justify"></i>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="nav navbar-nav ml-auto">
+							<!-- <li class="nav-item"><a class="nav-link fl mr-4 btn btn-light" href="#">
+									<i class="fa fa-shopping-cart" title="View Cart"
+									style="color: red;"></i><span class="label">10</span>
+							</a></li> -->
+							<li class="nav-item  active"><a class="nav-link btn btn-light mr-2" th:href="@{/Admin/product}"
+								>add Product</a></li>
+							<!-- <li class="nav-item"><a onclick=" handleListProduct(event);" class="nav-link btn btn-light mr-2" th:href="@{/Admin/index}">Products</a></li> -->
+							<li class="nav-item"><a class="nav-link btn btn-light" href="#">Category</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div class="line"></div>
+			<div class="container" id="app">
+				
+				 <div class="col-12">
+            <h3 class="text-center">list of products</h3>
+			<hr>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">image</th>
+						<th scope="col">name</th>
+						<th scope="col">description</th>
+						<th scope="col">price</th>
+						<th scope="col">delete product</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="product : ${products}">
+						<th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{product.image}}" style="width: 100px;height: 100px;"></th>
+						<td>[[*{product.name}]] 
+						<!-- Button trigger modal --> <br>
+							<button type="button" class="btn btn-success btn-sm mt-2"
+								data-toggle="modal"
+								th:attr="data-target='#exampleModalCenter'+*{product.id}">change name</button> 
+							<!-- Modal -->
+							<div class="modal fade"
+								th:id="*{'exampleModalCenter'+{product.id}}" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalCenterTitle"
+								aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalCenterTitle">change
+												product name</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form th:action="@{/Admin/changeName}" action="#" method="post">
+												<div class="form-group">
+													<label>product id</label> <input type="text"
+														th:value="*{product.id}" class="form-control" name="id" disabled="disabled">
+													<label>new Product name</label> <input type="text"
+														name="newPname" class="form-control"> <br>
+													<button type="submit" class="btn btn-primary">submit</button>
+												</div>
+											</form>
+
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</td>
+						<td>[[*{product.description}]] <!-- Button trigger modal -->
+							<br>
+							<button type="button" class="btn btn-success btn-sm mt-2"
+								data-toggle="modal"
+								th:attr="data-target='#exampleModalCenterDesc'+${product.id}">change
+								description</button> <!-- Modal -->
+							<div class="modal fade"
+								th:id="*{'exampleModalCenterDesc'+{product.id}}" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalCenterTitle"
+								aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalCenterTitle">change
+												product description</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form th:action="@{/Admin/changeDescription}" action="#" method="post">
+												<div class="form-group">
+													<label>product id</label> <input type="text"
+														th:value="*{product.id}" class="form-control" name="id">
+													<label>new Product description</label> <input type="text"
+														name="newDescription" class="form-control"> <br>
+													<button type="submit" class="btn btn-primary">submit</button>
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
+						<td>[[*{product.price}]] <!-- Button trigger modal --> <br>
+							<button type="button" class="btn btn-success btn-sm mt-2"
+								data-toggle="modal"
+								th:attr="data-target='#exampleModalCenterPrice'+${product.id}">change
+								price</button> <!-- Modal -->
+							<div class="modal fade"
+								th:id="*{'exampleModalCenterPrice'+{product.id}}" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalCenterTitle"
+								aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalCenterTitle">change
+												product price</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form th:action=@{/Admin/changePrice} action="#F" method="post">
+												<div class="form-group">
+													<label>product id</label> <input type="text"
+														th:value="*{product.id}" class="form-control" name="id">
+													<label>new Product price</label> <input type="text"
+														name="newPrice" class="form-control"> <br>
+													<button type="submit" class="btn btn-primary">submit</button>
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary">Save
+												changes</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
+						<td><form th:action=@{/Admin/deleteProd/{id}(id=${product.id})} action="#F" method="get">
+						<button type="submit" class="btn btn-danger mt-4">Delete</button>
+							</form></td>
+					</tr>
+				</tbody>
+			</table>
+			<hr>
+		</div>
+				
+			 </div>
+			<div class="line"></div>
+		</div>
+	</div>
+	<!-- Bootstrap JS & jQuery -->
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<!-- Popper.JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="api/ajaxFetch.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
+</body>
+</html>

@@ -10,13 +10,15 @@
     </head>
     <body>
     	<div layout:fragment="content">
-    	
+    		 <p sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></p>
 		     <p sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></p>
 	         <p><a th:href="@{/home}">User Home</a></p>
 		     <p><a th:href="@{/admin/home}">Admin Home</a></p>
 		     <p><a th:href="@{/register}">Registered User Details</a></p>
-			 <p><a th:href="@{/newreg}">Registration</a></p>
-		     <p sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></p>
+			 <p><a th:href="@{/registers}">Registration</a></p>
+		     <p><a th:href="@{/Admin/categories}">Admin Home</a></p>
+		     <p><a th:href="@{/Admin/product}">Add Products</a></p>
+		     <p><a th:href="@{/shop}">User Home</a></p>
     	</div>
     	
     </body>
