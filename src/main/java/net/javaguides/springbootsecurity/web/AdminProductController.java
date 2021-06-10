@@ -61,10 +61,10 @@ public class AdminProductController {
     }    
     
     @PostMapping("/Admin/changeName")
-    public String changePname(@RequestParam("id") Long id,
+    public String changePname(@RequestParam("id") long id,
     		@RequestParam("newPname") String name)
     {
-    	productService.chageProductName(id, name);
+    	productService.changeProductName(id, name);
     	return "redirect:/Admin/index?updated";
     }
     @PostMapping("/Admin/changeDescription")

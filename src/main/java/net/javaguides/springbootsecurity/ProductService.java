@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import net.javaguides.springbootsecurity.entities.Product;
 import net.javaguides.springbootsecurity.repositories.ProductRepositry;
-import net.javaguides.springbootsecurity.repositories.UserRepository;
 
 @Service
 public class ProductService {
@@ -47,7 +46,7 @@ public class ProductService {
 		productRepo.deleteById(id);
 	}
 
-	public void chageProductName(Long id, String name) {
+	public void changeProductName(Long id, String name) {
 		Product p = new Product();
 		p = productRepo.findById(id).get();
 		p.setName(name);
