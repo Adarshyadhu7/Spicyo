@@ -1,9 +1,5 @@
 package net.javaguides.springbootsecurity.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,9 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
@@ -30,11 +24,6 @@ public class Product {
 	@Column(columnDefinition = "MEDIUMBLOB")
 	private String image;
 	
-//	@ManyToMany(cascade=CascadeType.MERGE, fetch = FetchType.EAGER)
-//	@JoinTable(name="product_category",joinColumns = {
-//			@JoinColumn(name="product_id", referencedColumnName = "id")}
-//	,inverseJoinColumns = {@JoinColumn(name="category_id",referencedColumnName = "id")})
-//	private Set<Category> categories = new HashSet<Category>();
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id",referencedColumnName="id")
 	private Category category;

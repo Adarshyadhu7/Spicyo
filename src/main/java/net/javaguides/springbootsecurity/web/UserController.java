@@ -32,23 +32,30 @@ public class UserController {
 	{		
 		model.addAttribute("cartcount",GlobalData.cart.size());
 		model.addAttribute("categories", category.getAllCategory());
-	//	model.addAttribute("products",product.getAllProductsByCategoryId(id));
+		model.addAttribute("products",product.getAllProductsByCategoryId(id));
 		return "shop";
 	}
-//	@GetMapping("/shop/category/{id}")
-//	public String itemById(Model model,@PathVariable long id)
-//	{		
-//		model.addAttribute("cartcount",GlobalData.cart.size());
-////		model.addAttribute("product",product.getProductsById(id).get());
-//		return "shop";
-//	}
 	@GetMapping("/shop/viewproduct/{id}")
 	public String viewProd(Model model,@PathVariable long id)
 	{
-//		model.addAttribute("cartcount",GlobalData.cart.size());
-//		model.addAttribute("categories", category.getAllCategory());
-//		model.addAttribute("products",product.getAllProduct());
+		model.addAttribute("cartcount",GlobalData.cart.size());
+		model.addAttribute("product",product.getProductById(id).get());
 		return "viewProduct";
+	}
+	@GetMapping("/contact")
+	public String contact()
+	{
+		return "contact";
+	}
+	@GetMapping("/recipe")
+	public String recipe()
+	{
+		return "recipe";
+	}
+	@GetMapping("/about")
+	public String about()
+	{
+		return "about";
 	}
 
 }

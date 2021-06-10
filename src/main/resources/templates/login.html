@@ -7,13 +7,13 @@
 <head>
 <title>Log in</title>
 </head>
-<body>
+<body >
 	<div layout:fragment="content">
+	<div class="container">
 		<div class="panel col-md-5">
 			<div class="panel panel-primary">
-				<div class="panel-heading">Login Form</div>
+				<div class="panel-heading">Login</div>
 				<div class="panel-body">
-
 					<form  th:action="@{/login}" method="post">
 						<div class="form-group has-feedback">
 							<input type="email" class="form-control" name="username"
@@ -60,16 +60,22 @@
 										<i class="icon fa fa-warning"></i> <span th:text="${msg}"></span>
 									</p>
 								</div>
+								<span style="margin-top: 10px">New Around here ??
+								<a class="linkControl" href="#" th:href="@{/registers}">Sign up</a></span>
 							</div>
 
 						</div>
 					</form>
 				</div>
 			</div>
-
 		</div>
-
+		 <div class="col-md-7 full text_align_center">
+			 <div class="slider_image">
+			  <img class="img-responsive" th:src="@{images2/burger_slide.png}" alt="#" />
+			  </div>
+		 </div>
+    	</div>
 	</div>
-
+</div>
 </body>
 </html>

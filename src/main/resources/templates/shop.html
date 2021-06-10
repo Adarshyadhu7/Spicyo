@@ -13,8 +13,6 @@
     <title>Document</title>
 </head>
 <body>
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -27,6 +25,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
+				<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
+					<a  class="nav-link" th:href="@{/Admin/index}">Admin Home</a>
+				</li>
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/}" href="#">home</a>
                 </li>
@@ -43,7 +44,7 @@
                     <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
                 </li>
                 <li class="nav-item active">
-                    <span class="nav-link" th:text="${cartCount}">0</span>
+                    <span class="nav-link" th:text="${cartcount}">0</span>
                 </li>
             </ul>
 
@@ -72,7 +73,7 @@
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.name}"></h5>
                             <h4>₹ <span th:text="${product.price}"></span></h4>
-                            <p th:text="${product.description}" >Suresh Dasari is a founder and technical lead developer in tutlane.</p>
+                            <p th:text="${product.description}" >Description</p>
                             <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="btn btn-primary">View Product</a>
                         </div>
                     </div>
@@ -81,11 +82,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import net.javaguides.springbootsecurity.entities.Product;
 import net.javaguides.springbootsecurity.repositories.ProductRepositry;
+import net.javaguides.springbootsecurity.repositories.UserRepository;
 
 @Service
 public class ProductService {
@@ -19,7 +20,7 @@ public class ProductService {
 	private ProductRepositry productRepo;
 	@Autowired
 	CategoryService cat;
-
+		
 	public void saveProductToDB(MultipartFile file, String name, String description, int price, Long catId) {
 		Product p = new Product();
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -67,14 +68,12 @@ public class ProductService {
 		productRepo.save(p);
 	}
 
-	public Optional<Product> getProductsById(Long id) {
+	public Optional<Product> getProductById(Long id) {
 		return productRepo.findById(id);
 	}
 
-//	public List<Product> getAllProductsByCategoryId(Long id) 
-//	{ 
-//		return productRepo.findAllByCategoryId(id); 
-//	}
-	 
-
+	public List<Product> getAllProductsByCategoryId(Long id) 
+	{ 
+		return productRepo.findAllByCategoryId(id); 
+	}
 }

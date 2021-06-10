@@ -11,6 +11,7 @@ import net.javaguides.springbootsecurity.entities.Product;
 @Repository
 public interface ProductRepositry extends JpaRepository<Product, Long> {
 
-	//List<Product> findAllByCategoryId(Long id);
+	List<Product> findAllByCategoryId(Long id);
+
 
 }

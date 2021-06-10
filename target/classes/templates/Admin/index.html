@@ -1,70 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>Admin | Home</title>
 
-<!-- Bootstrap CSS  & FontAwsome-->
+<!-- 
 <link  th:href="@{https://cdn.usebootstrap.com/bootstrap/4.1.1/css/bootstrap.min.css}" rel="stylesheet">
 <link th:href="@{https://cdn.usebootstrap.com/bootstrap/4.1.1/js/bootstrap.min.js}" rel="stylesheet">
-<link rel="icon" th:href="@{https://cdn.usebootstrap.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js}" />
+<link rel="icon" th:href="@{https://cdn.usebootstrap.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js}" /> -->
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 </head>
 <body>
-	<div class="wrapper">
-	<div th:if="${param.success}">
+<div th:if="${param.success}">
 	<div class="alert alert-info">You've successfully Updated an item!</div>
-		</div>
-	<div align="center">
-		<!-- Page Content  -->
-		<div id="content">
-			<nav th:fragment="sidebar" class="navbar navbar-expand-lg navbar-light"
-				style="border-bottom: 4px solid #7386D5;">
-				<div class="container-fluid">
-					<button type="button" id="sidebarCollapse"
-						class="btn btn-info mr-4">
-						<i class="fas fa-align-left"></i>
-						<!-- <span>Toggle Sidebar</span> -->
-					</button>
-					<form class="form-inline frm">
-						<input class="form-control mr-sm-2" type="search"
-							placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					</form>
-					<div class="container-fluid">
-					<p>Welcome ADMIN</p>
-					<p>   <a th:href="@{/logout}">Logout</a></p></div>
-					<button class="btn btn-light d-inline-block d-lg-none ml-auto"
-						type="button" data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<i class="fas fa-align-justify"></i>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="nav navbar-nav ml-auto">
-							<!-- <li class="nav-item"><a class="nav-link fl mr-4 btn btn-light" href="#">
-									<i class="fa fa-shopping-cart" title="View Cart"
-									style="color: red;"></i><span class="label">10</span>
-							</a></li> -->
-							<li class="nav-item  active"><a class="nav-link btn btn-light mr-2" th:href="@{/Admin/product}"
-								>add Product</a></li>
-							<!-- <li class="nav-item"><a onclick=" handleListProduct(event);" class="nav-link btn btn-light mr-2" th:href="@{/Admin/index}">Products</a></li> -->
-							<li class="nav-item"><a class="nav-link btn btn-light" href="#">Category</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/images/logo.png}"  src="" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+        </a>
+       <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+ -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+             <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
+                </li></ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/Admin/product}" href="#">Add Products</a>
+                </li>
+                 <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/Admin/categories}" href="#">View Categories</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/logout}" href="#">logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 			<div class="line"></div>
 			<div class="container" id="app">
 				
 				 <div class="col-12">
-            <h3 class="text-center">list of products</h3>
+            <h3 class="text-center">List of products</h3>
 			<hr>
 			<table class="table">
 				<thead class="thead-dark">
