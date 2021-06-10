@@ -44,5 +44,11 @@ public class CartController {
 		model.addAttribute("total",GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
 		return "checkout";
 	}
+	@GetMapping("/payNow")
+	public String Payment(Model model)
+	{
+		GlobalData.cart.clear();
+		return "layout1";
+	}
 	
 }

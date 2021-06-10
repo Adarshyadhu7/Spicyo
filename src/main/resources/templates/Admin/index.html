@@ -22,8 +22,11 @@
 
 </head>
 <body>
-<div th:if="${param.success}">
-	<div class="alert alert-info">You've successfully Updated an item!</div>
+<div th:if="${param.updated}">
+	<div class="alert alert-info">You've successfully Updated an Item</div>
+</div>
+<div th:if="${param.inserted}">
+	<div class="alert alert-info">You've successfully Inserted an Item</div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">

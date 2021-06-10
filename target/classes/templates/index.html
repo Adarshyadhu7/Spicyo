@@ -88,7 +88,7 @@
                                 <li class="dinone">Contact Us : <img style="margin-right: 15px;margin-left: 15px;" th:src="@{images2/phone_icon.png}" alt="#"><a href="#">987-654-3210</a></li>
                                 <li class="dinone"><img style="margin-right: 15px;" th:src="@{images2/mail_icon.png}" alt="#"><a href="#">spicyo@gmail.com</a></li>
                                 <li class="dinone"><img style="margin-right: 15px;height: 21px;position: relative;top: -2px;" th:src="@{images2/location_icon.png}" alt="#"><a href="#">Shop No:64 Lulu , Kochi</a></li>
-                                <li class="button_user"><a class="button active" th:href="@{/shop}">Login</a><a class="button" th:href="@{/registers}">Register</a></li>
+                                <li class="button_user"><a class="button active" sec:authorize="isAnonymous()" th:href="@{/shop}">Login</a><a class="button" sec:authorize="isAnonymous()" th:href="@{/registers}">Register</a></li>
                                 <li><img style="margin-right: 15px;" th:src="@{images2/search_icon.png}" alt="#"></li>
                                 <li>
                                     <button type="button" id="sidebarCollapse">

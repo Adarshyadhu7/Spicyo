@@ -25,49 +25,6 @@
 <script type="text/javascript" src=""></script>
 </head>
 <body>
-	<!-- <div class="wrapper">
-	Page Content 
-		<div id="content">
-			<nav th:fragment="sidebar"
-				class="navbar navbar-expand-lg navbar-light"
-				style="border-bottom: 4px solid #7386D5;">
-				<div class="container-fluid">
-				
-					<button type="button" id="sidebarCollapse"
-						class="btn btn-info mr-4">
-						<i class="fas fa-align-left"></i>
-					<span>Toggle Sidebar</span>
-					</button>
-					<form class="form-inline frm">
-						<input class="form-control mr-sm-2" type="search"
-							placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					</form>
-					<div class="container-fluid">
-					<p>Welcome ADMIN</p>
-					<p>   <a th:href="@{/logout}">Logout</a></p></div>
-					<button class="btn btn-light d-inline-block d-lg-none ml-auto"
-						type="button" data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<i class="fas fa-align-justify"></i>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="nav navbar-nav ml-auto">
-							<li class="nav-item"><a
-								class="nav-link fl mr-4 btn btn-light" href="#"> <i
-									class="fa fa-shopping-cart" title="View Cart"
-									style="color: red;"></i><span class="label">10</span>
-							</a></li>
-							<li class="nav-item  active">
-							<a class="nav-link btn btn-light mr-2" href="#" onclick="handleAddProduct(event);">add Product</a></li>
-							<li class="nav-item"><a	class="nav-link btn btn-light mr-2" th:href="@{/Admin/index}">Products</a></li>
-							<li class="nav-item"><a class="nav-link btn btn-light" href="#">Category</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav> -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light" >
 			    <div class="container-fluid">
 			        <a class="navbar-brand" href="#">
@@ -113,21 +70,17 @@
 			                    </select>
 			                </div>  
 							<!-- Name -->
-							<input type="text" name="pname" id="name"
-								class="form-control mb-4" placeholder="Product Name">
+							<input type="text" name="pname" id="name" required class="form-control mb-4" placeholder="Product Name">
 
 							<!-- Price -->
-							<input type="text" name="price" id="price"
-								class="form-control mb-4" placeholder="Product Price">
+							<input type="text" name="price" id="price" required class="form-control mb-4" placeholder="Product Price">
 
 							<!-- Description -->
-							<textarea class="form-control mb-4" id="desc" name="desc"
-								placeholder="Product Description">Product Description
+							<textarea class="form-control mb-4" id="desc" name="desc" required placeholder="Product Description">Product Description
                                  </textarea>
 							<div class="custom-file mb-4">
-								<input type="file" name="file" class="custom-file-input"
-									id="customFile"> <label class="custom-file-label"
-									for="customFile">Product Image</label>
+								<input type="file" name="file" class="custom-file-input" required id="customFile"> 
+								<label class="custom-file-label" for="customFile">Product Image</label>
 							</div>
 							<!-- Sign in button -->
 							<button class="btn btn-info btn-block" type="submit">Add</button>

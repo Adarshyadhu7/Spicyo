@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import net.javaguides.springbootsecurity.GlobalData;
 import net.javaguides.springbootsecurity.entities.Role;
 import net.javaguides.springbootsecurity.entities.User;
 import net.javaguides.springbootsecurity.repositories.RoleRepo;
@@ -16,6 +18,7 @@ import net.javaguides.springbootsecurity.repositories.UserRepository;
 
 @Controller
 public class LoginController {
+	
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	@Autowired
@@ -31,27 +34,43 @@ public class LoginController {
 		return "register1";
 	}
 	
+	@GetMapping("/login")
+	public String getLogin()
+	{
+		GlobalData.cart.clear();
+		return "login";
+	}
+	
+	
 	@PostMapping("/registers")
 	public String saveUsr(@ModelAttribute("user") User user)
 	{
-		if(checkIfUserExist(user.getEmail()))
+		
+		try 
+		{
+			if(checkIfUserExist(user.getEmail()))
+			{
+				 return "redirect:/registers?fail";
+			}
+			else
+			{
+				String password = user.getPassword();
+				user.setPassword(bcrypt.encode(password));
+				List<Role> roles = new ArrayList<>(); 
+				roles.add(roleRepo.findById(3).get());
+				user.setRoles(roles);
+				userRepo.save(user);
+				return "redirect:/shop";
+			}
+		}
+		catch(Exception e)
 		{
 			return "redirect:/registers?fail";
 		}
-		else
+	}		
+		public boolean checkIfUserExist(String email) 
 		{
-		String password = user.getPassword();
-		user.setPassword(bcrypt.encode(password));
-		List<Role> roles = new ArrayList<>(); 
-		roles.add(roleRepo.findById(3).get());
-		user.setRoles(roles);
-		userRepo.save(user);
-		return "redirect:/shop";
+		    return usr.findUserByEmail(email)== null ? true : false;
 		}
-	}
-	public boolean checkIfUserExist(String email) 
-	{
-	        return usr.findUserByEmail(email)== null ? true : false;
-	}
-	
+
 }

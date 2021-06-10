@@ -13,5 +13,4 @@ public class GlobalData {
 	{
 		cart = new ArrayList<Product>();
 	}
-		
 }

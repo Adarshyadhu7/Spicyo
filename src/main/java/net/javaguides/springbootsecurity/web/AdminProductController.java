@@ -50,14 +50,14 @@ public class AdminProductController {
     		@RequestParam("categoryId") Long categoryId)
     {
     	productService.saveProductToDB(file, name, desc, price, categoryId);
-    	return "redirect:/Admin/index?success";
+    	return "redirect:/Admin/index?inserted";
     }
     
     @GetMapping("/Admin/deleteProd/{id}")
     public String delProduct(@PathVariable long id)
     {
     	productService.deleteProdById(id);
-    	return "redirect:/Admin/index?success";
+    	return "redirect:/Admin/index?updated";
     }    
     
     @PostMapping("/Admin/changeName")
@@ -65,14 +65,14 @@ public class AdminProductController {
     		@RequestParam("newPname") String name)
     {
     	productService.chageProductName(id, name);
-    	return "redirect:/Admin/index?success";
+    	return "redirect:/Admin/index?updated";
     }
     @PostMapping("/Admin/changeDescription")
     public String changeDescription(@RequestParam("id") Long id ,
     		@RequestParam("newDescription") String description)
     {
     	productService.changeProductDescription(id, description);
-    	return "redirect:/Admin/index?success";
+    	return "redirect:/Admin/index?updated";
     }
     
     @PostMapping("/Admin/changePrice")
@@ -80,7 +80,7 @@ public class AdminProductController {
     		@RequestParam("newPrice") int price)
     {
     	productService.changeProductPrice(id, price);
-    	return "redirect:/Admin/index?success";
+    	return "redirect:/Admin/index?updated";
     }
     
     
